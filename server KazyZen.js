@@ -50,7 +50,7 @@ app.post('/logout', (req, res) => {
     res.json({ message: 'Déconnexion réussie' });
 });
 
-app.get('https://golbeyprog.github.io/', (req, res) => {
+app.get('https://golbeyprog.github.io/KazyZen/', (req, res) => {
     const token = req.headers['x-access-token'];
     if (!token) {
         return res.status(401).json({ message: 'Pas de token fourni' });
@@ -66,7 +66,7 @@ app.get('https://golbeyprog.github.io/', (req, res) => {
     }
 });
 
-app.post('https://golbeyprog.github.io/', async (req, res) => {
+app.post('https://golbeyprog.github.io/KazyZen/', async (req, res) => {
     const token = req.headers['x-access-token'];
     if (!token) {
         return res.status(401).json({ message: 'Pas de token fourni' });
@@ -77,7 +77,7 @@ app.post('https://golbeyprog.github.io/', async (req, res) => {
         const userEmail = decoded.email;
 
         const response = await axios.post(
-        https://golbeyprog.github.io/, {
+        https://golbeyprog.github.io/KazyZen/, {
             invoice: {
                 items: [
                     { name: 'Abonnement', quantity: 1, unit_price: 1.00 }
