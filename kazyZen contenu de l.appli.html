@@ -1,0 +1,1098 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+    /* Styles pour le corps de la page */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Styles pour l'en-tête */
+header {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Styles pour la navigation */
+nav {
+    background-color: #333;
+    padding: 10px 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Styles pour les sections principales */
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+/* Styles pour le pied de page */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+/* Styles spécifiques pour la section Gestion du Temps */
+#gestion-temps {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+/* Styles spécifiques pour la section Gestion du Temps */
+#gestion-temps {
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+#task-list {
+    margin-bottom: 20px;
+}
+
+#tasks {
+    list-style-type: none;
+    padding: 0;
+}
+
+#tasks li {
+    margin-bottom: 5px;
+}
+
+#time-tracker {
+    margin-top: 20px;
+}
+/* Styles spécifiques pour la section Méditation Guidée */
+#meditation {
+    background-color: #f9f9f9;
+    padding: 20px;
+}
+
+#meditation-player {
+    margin-bottom: 20px;
+}
+
+#meditation-timer {
+    margin-top: 20px;
+}
+/* Styles spécifiques pour la section Exercices de Respiration */
+#exercices {
+    background-color: #e6f7ff;
+    padding: 20px;
+}
+
+#breathing-exercises {
+    margin-top: 20px;
+}
+/* Styles spécifiques pour la section Objectifs et Suivi de Progression */
+#objectifs {
+    background-color: #fff0b3;
+    padding: 20px;
+}
+
+#objectives {
+    margin-bottom: 20px;
+}
+
+#progress {
+    margin-top: 20px;
+}
+/* Styles spécifiques pour la section Conseils de Bien-Être */
+#conseils {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+/* Styles spécifiques pour la section Rappels pour des Habitudes Positives */
+#rappels {
+    background-color: #e0f2f1;
+    padding: 20px;
+}
+/* Styles spécifiques pour la section Ressources pour Améliorer la Productivité et la Gestion du Stress */
+#ressources {
+    background-color: #fdebd0;
+    padding: 20px;
+}
+/* Styles spécifiques pour la section Paramètres de l'Application */
+#parametres {
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+#apropos {
+    background-color: #f5f5f5;
+    padding: 20px;
+    text-align: justify;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ma vie équilibrée</h1>
+    </header>
+      <nav>
+        <ul>
+            <li><a href="#gestion-temps">Gestion du Temps</a></li>
+            <li><a href="#meditation">Méditation Guidée</a></li>
+            <li><a href="#exercices">Exercices de Respiration</a></li>
+            <li><a href="#objectifs">Objectifs et Suivi</a></li>
+            <li><a href="#conseils">Conseils de Bien-Être</a></li>
+            <li><a href="#rappels">Rappels Positifs</a></li>
+            <li><a href="#ressources">Ressources</a></li>
+        </ul>
+    </nav>
+    <main>
+     <section id="apropos">
+    <h2>À Propos de KazyZen</h2>
+    <p>KazyZen est une application de développement personnel qui vise à vous aider à améliorer votre bien-être physique et mental. Elle offre une gamme d'exercices de respiration, des conseils de bien-être, des outils de gestion du temps, et bien plus encore.</p>
+    <p>Notre objectif est de vous fournir les ressources nécessaires pour atteindre vos objectifs de santé et de bonheur, tout en vous aidant à gérer le stress et à rester concentré sur ce qui est important pour vous.</p>
+    <p>Nous espérons que KazyZen deviendra un outil précieux dans votre parcours vers une vie plus équilibrée et épanouissante.</p>
+</section>
+
+        <section id="gestion-temps">
+            <!-- Contenu de la section Gestion du Temps -->
+              <h1>Gestion du temps</h1>
+    <section id="time-management">
+        <h2>Techniques de gestion du temps</h2>
+        <form id="time-management-techniques-form">
+            <label for="technique">Technique:</label>
+            <input type="text" id="technique" name="technique" required><br>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea><br>
+
+            <button type="submit">Enregistrer</button>
+        </form>
+        <div class="item-list" id="time-management-techniques-list"></div>
+        <h3>Exemples de techniques de gestion du temps</h3>
+        <div class="item-list" id="examples-list"></div>
+    </section>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('time-management-techniques-form');
+    const list = document.getElementById('time-management-techniques-list');
+    const examplesList = document.getElementById('examples-list');
+
+    const examples = [
+        { name: 'Méthode Pomodoro', description: 'Utilisez un minuteur pour travailler pendant 25 minutes, puis prenez une courte pause de 5 minutes.' },
+        { name: 'Technique de la Boîte de Temps', description: 'Allouez des blocs de temps spécifiques pour chaque tâche ou activité.' },
+        { name: 'Priorisation ABC', description: 'Classez vos tâches en trois catégories: A (très important), B (important), C (moins important).' },
+        { name: 'La règle des 2 minutes', description: 'Si une tâche peut être faite en 2 minutes ou moins, faites-la immédiatement.' },
+        { name: 'La Matrice d’Eisenhower', description: 'Divisez les tâches en quatre quadrants basés sur l’urgence et l’importance.' }
+    ];
+
+    function loadTechniques() {
+        const techniques = JSON.parse(localStorage.getItem('timeManagementTechniques')) || [];
+        list.innerHTML = '';
+        techniques.forEach((technique, index) => {
+            const techniqueElement = document.createElement('div');
+            techniqueElement.className = 'item';
+            techniqueElement.innerHTML = `
+                <h3>${technique.name}</h3>
+                <p>Description: ${technique.description}</p>
+                <div class="actions">
+                    <button onclick="editTechnique(${index})">Modifier</button>
+                    <button onclick="deleteTechnique(${index})">Supprimer</button>
+                </div>
+            `;
+            list.appendChild(techniqueElement);
+        });
+    }
+
+    function loadExamples() {
+        examplesList.innerHTML = '';
+        examples.forEach((example) => {
+            const exampleElement = document.createElement('div');
+            exampleElement.className = 'item';
+            exampleElement.innerHTML = `
+                <h3>${example.name}</h3>
+                <p>Description: ${example.description}</p>
+            `;
+            examplesList.appendChild(exampleElement);
+        });
+    }
+
+    function saveTechniques(techniques) {
+        localStorage.setItem('timeManagementTechniques', JSON.stringify(techniques));
+    }
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById('technique').value;
+        const description = document.getElementById('description').value;
+        const techniques = JSON.parse(localStorage.getItem('timeManagementTechniques')) || [];
+
+        if (form.dataset.index) {
+            const index = form.dataset.index;
+            techniques[index] = { name, description };
+            delete form.dataset.index;
+        } else {
+            techniques.push({ name, description });
+        }
+
+        saveTechniques(techniques);
+        loadTechniques();
+        form.reset();
+    });
+
+    window.editTechnique = function(index) {
+        const techniques = JSON.parse(localStorage.getItem('timeManagementTechniques'));
+        const technique = techniques[index];
+
+        document.getElementById('technique').value = technique.name;
+        document.getElementById('description').value = technique.description;
+        form.dataset.index = index;
+    };
+
+    window.deleteTechnique = function(index) {
+        const techniques = JSON.parse(localStorage.getItem('timeManagementTechniques'));
+        techniques.splice(index, 1);
+        saveTechniques(techniques);
+        loadTechniques();
+    };
+
+    loadTechniques();
+    loadExamples();
+});
+    </script>
+        </section>
+        <section id="meditation">
+            <!-- Contenu de la section Méditation Guidée -->
+            <section id="meditation">
+    <h2>Méditation Guidée</h2>
+    <div id="meditation-player">
+        <!-- Ici, vous pourriez intégrer un lecteur audio pour la méditation guidée -->
+        <audio controls>
+            <source src="meditation_audio.mp3" type="audio/mpeg">
+            Votre navigateur ne prend pas en charge l'élément audio.
+        </audio>
+    </div>
+    <div id="meditation-timer">
+        <h3>Minuterie de Méditation</h3>
+        <label for="meditation-duration">Durée (minutes):</label>
+        <input type="number" id="meditation-duration" min="1" value="5">
+        <button id="start-meditation">Commencer</button>
+        <button id="stop-meditation">Arrêter</button>
+    </div>
+      <h1>Musique de relaxation et méditation</h1>
+    <ul>
+        <li><a href="https://www.youtube.com/channel/UC5hb8aioNMZ40X2jyDiAF6A" target="_blank">Yellow Brick Cinema - YouTube</a></li>
+        <li><a href="https://www.youtube.com/user/TheMeditativeMind" target="_blank">Meditative Mind - YouTube</a></li>
+        <li><a href="https://www.youtube.com/channel/UCjzHeG1KWoonmf9d5KBvSiw" target="_blank">Soothing Relaxation - YouTube</a></li>
+        <li><a href="https://open.spotify.com/playlist/37i9dQZF1DX3rxVfibe1L0" target="_blank">Peaceful Meditation - Spotify</a></li>
+        <li><a href="https://open.spotify.com/playlist/37i9dQZF1DX7gIoKXt0gmx" target="_blank">Relaxing Music - Spotify</a></li>
+        <li><a href="https://soundcloud.com/tags/relaxation%20music" target="_blank">Relaxation Music - SoundCloud</a></li>
+        <li><a href="https://www.calmradio.com/en/" target="_blank">Calm Radio</a></li>
+        <li><a href="https://www.relaxmelodies.com/" target="_blank">Relax Melodies</a></li>
+        <li><a href="https://www.ambient-mixer.com/" target="_blank">Ambient Mixer</a></li>
+    </ul>
+</section>
+<script>
+// Logique spécifique pour la méditation guidée
+let meditationTimer;
+let meditationDuration;
+
+document.getElementById('start-meditation').addEventListener('click', function() {
+    const durationInput = document.getElementById('meditation-duration');
+    meditationDuration = parseInt(durationInput.value) * 60;
+    startMeditationTimer();
+});
+
+document.getElementById('stop-meditation').addEventListener('click', function() {
+    clearInterval(meditationTimer);
+});
+
+function startMeditationTimer() {
+    let timeLeft = meditationDuration;
+    updateMeditationTimer(timeLeft);
+    meditationTimer = setInterval(function() {
+        timeLeft--;
+        updateMeditationTimer(timeLeft);
+        if (timeLeft <= 0) {
+            clearInterval(meditationTimer);
+            alert("La méditation est terminée !");
+        }
+    }, 1000);
+}
+
+function updateMeditationTimer(timeLeft) {
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    document.getElementById('meditation-duration').value = minutes;
+    document.getElementById('meditation-duration').disabled = true;
+    document.getElementById('start-meditation').disabled = true;
+    document.getElementById('stop-meditation').disabled = false;
+}
+</script>
+        </section>
+        <section id="exercices">
+            <!-- Contenu de la section Exercices de Respiration -->
+        <h2>Exercices de respiration</h2>
+        <div id="breathing-exercises">
+            
+            <button id="start-breathing">Commencer</button>
+            <button id="stop-breathing" disabled>Arrêter</button>
+            <div id="breathing-timer">30</div>
+        </div>
+    </section>
+    <script>
+    let breathingTimer;
+const breathingDuration = 30; 
+// Durée par défaut de 30 secondes pour l'exercice de respiration
+let timeLeft = breathingDuration;
+
+document.getElementById('start-breathing').addEventListener('click', function() {
+    startBreathingExercise();
+});
+
+document.getElementById('stop-breathing').addEventListener('click', function() {
+    stopBreathingExercise();
+});
+
+function startBreathingExercise() {
+    timeLeft = breathingDuration;
+    updateBreathingTimer(timeLeft);
+    document.getElementById('start-breathing').disabled = true;
+    document.getElementById('stop-breathing').disabled = false;
+    breathingTimer = setInterval(function() {
+        timeLeft--;
+        updateBreathingTimer(timeLeft);
+        if (timeLeft <= 0) {
+            clearInterval(breathingTimer);
+            alert("Exercice de respiration terminé !");
+            resetBreathingButtons();
+        }
+    }, 1000);
+}
+
+function stopBreathingExercise() {
+    clearInterval(breathingTimer);
+    alert("Exercice de respiration arrêté !");
+    resetBreathingButtons();
+}
+
+function updateBreathingTimer(time) {
+    document.getElementById('breathing-timer').textContent = time;
+}
+
+function resetBreathingButtons() {
+    document.getElementById('start-breathing').disabled = false;
+    document.getElementById('stop-breathing').disabled = true;
+    updateBreathingTimer(breathingDuration);
+}
+    </script>
+    <section id="breathing-exercises">
+        <h2>Ajouter un Exercice</h2>
+        <form id="breathing-exercises-form">
+            <label for="exercise-name">Nom de l'exercice:</label>
+            <input type="text" id="exercise-name" name="exercise-name" required><br>
+
+            <label for="instructions">Instructions:</label>
+            <textarea id="instructions" name="instructions" required></textarea><br>
+
+            <button type="submit">Enregistrer</button>
+        </form>
+        <div class="item-list" id="breathing-exercises-list"></div>
+        
+        <h2>Exemples d'Exercices de Respiration</h2>
+        <div class="item-list" id="example-breathing-exercises-list"></div>
+        <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        .defi {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .defi.termine {
+            text-decoration: line-through;
+            color: gray;
+        }
+
+        button {
+            margin-left: 10px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Défis hebdomadaires </h1>
+        <button id="ajouter-defi-btn">Ajouter un nouveau défi</button>
+    </header>
+
+    <div id="liste-defis">
+        <!-- Les défis seront ajoutés dynamiquement ici -->
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-title">Ajouter un nouveau défi</h2>
+            <form id="formulaire-defi">
+                <input type="text" id="champ-defi" placeholder="Entrez un nouveau défi">
+                <button type="submit">Soumettre</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const listeDefis = document.getElementById('liste-defis');
+            const ajouterDefiBtn = document.getElementById('ajouter-defi-btn');
+            const modal = document.getElementById('modal');
+            const closeBtn = document.querySelector('.close');
+            const formulaireDefi = document.getElementById('formulaire-defi');
+            const champDefi = document.getElementById('champ-defi');
+            const modalTitle = document.getElementById('modal-title');
+
+            let defis = JSON.parse(localStorage.getItem('defis')) || [
+                { text: "Essayer une nouvelle recette", termine: false },
+                { text: "Faire une randonnée", termine: false },
+                { text: "Apprendre une nouvelle phrase dans une langue étrangère", termine: false }
+            ];
+
+            let editIndex = -1;
+
+            afficherDefis();
+
+            ajouterDefiBtn.addEventListener('click', function() {
+                modalTitle.textContent = "Ajouter un nouveau défi";
+                champDefi.value = '';
+                editIndex = -1;
+                modal.style.display = 'block';
+            });
+
+            closeBtn.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+
+            window.addEventListener('click', function(event) {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            formulaireDefi.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const nouveauDefi = champDefi.value.trim();
+                if (nouveauDefi !== '') {
+                    if (editIndex >= 0) {
+                        defis[editIndex].text = nouveauDefi;
+                        editIndex = -1;
+                    } else {
+                        defis.push({ text: nouveauDefi, termine: false });
+                    }
+                    localStorage.setItem('defis', JSON.stringify(defis));
+                    afficherDefis();
+                    champDefi.value = '';
+                    modal.style.display = 'none';
+                }
+            });
+
+            function afficherDefis() {
+                listeDefis.innerHTML = '';
+                defis.forEach((defi, index) => {
+                    const divDefi = document.createElement('div');
+                    divDefi.classList.add('defi');
+                    if (defi.termine) {
+                        divDefi.classList.add('termine');
+                    }
+
+                    const defiText = document.createElement('span');
+                    defiText.innerText = defi.text;
+                    defiText.addEventListener('click', function() {
+                        basculerTermine(index);
+                    });
+
+                    const modifierBtn = document.createElement('button');
+                    modifierBtn.innerText = 'Modifier';
+                    modifierBtn.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        editIndex = index;
+                        champDefi.value = defi.text;
+                        modalTitle.textContent = "Modifier le défi";
+                        modal.style.display = 'block';
+                    });
+
+                    const supprimerBtn = document.createElement('button');
+                    supprimerBtn.innerText = 'Supprimer';
+                    supprimerBtn.addEventListener('click', function(event) {
+                        event.stopPropagation();
+                        supprimerDefi(index);
+                    });
+
+                    divDefi.appendChild(defiText);
+                    divDefi.appendChild(modifierBtn);
+                    divDefi.appendChild(supprimerBtn);
+
+                    listeDefis.appendChild(divDefi);
+                });
+            }
+
+            function basculerTermine(index) {
+                defis[index].termine = !defis[index].termine;
+                localStorage.setItem('defis', JSON.stringify(defis));
+                afficherDefis();
+                if (defis[index].termine) {
+                    alert('Bravo ! Défi relevé avec succès !');
+                }
+            }
+
+            function supprimerDefi(index) {
+                defis.splice(index, 1);
+                localStorage.setItem('defis', JSON.stringify(defis));
+                afficherDefis();
+            }
+        });
+    </script>
+</body>
+</html>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('breathing-exercises-form');
+    const list = document.getElementById('breathing-exercises-list');
+    const exampleList = document.getElementById('example-breathing-exercises-list');
+
+    const examples = [
+        { name: 'Respiration Abdominale', instructions: 'Allongez-vous sur le dos et placez une main sur votre poitrine et l\'autre sur votre ventre. Inspirez profondément par le nez en gonflant votre ventre, puis expirez lentement par la bouche.' },
+        { name: 'Respiration 4-7-8', instructions: 'Inspirez par le nez pendant 4 secondes, retenez votre souffle pendant 7 secondes, puis expirez complètement par la bouche pendant 8 secondes.' },
+        { name: 'Respiration Alternée', instructions: 'Fermez la narine droite avec votre pouce, inspirez par la narine gauche. Fermez la narine gauche avec votre annulaire, ouvrez la narine droite et expirez. Répétez en alternant les narines.' }
+    ];
+
+    function loadExercises() {
+        const exercises = JSON.parse(localStorage.getItem('breathingExercises')) || [];
+        list.innerHTML = '';
+        exercises.forEach((exercise, index) => {
+            const exerciseElement = document.createElement('div');
+            exerciseElement.className = 'item';
+            exerciseElement.innerHTML = `
+                <h3>${exercise.name}</h3>
+                <p>Instructions: ${exercise.instructions}</p>
+                <div class="actions">
+                    <button onclick="editExercise(${index})">Modifier</button>
+                    <button onclick="deleteExercise(${index})">Supprimer</button>
+                </div>
+            `;
+            list.appendChild(exerciseElement);
+        });
+    }
+
+    function loadExampleExercises() {
+        exampleList.innerHTML = '';
+        examples.forEach((example) => {
+            const exampleElement = document.createElement('div');
+            exampleElement.className = 'item';
+            exampleElement.innerHTML = `
+                <h3>${example.name}</h3>
+                <p>Instructions: ${example.instructions}</p>
+            `;
+            exampleList.appendChild(exampleElement);
+        });
+    }
+
+    function saveExercises(exercises) {
+        localStorage.setItem('breathingExercises', JSON.stringify(exercises));
+    }
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const name = document.getElementById('exercise-name').value;
+        const instructions = document.getElementById('instructions').value;
+        const exercises = JSON.parse(localStorage.getItem('breathingExercises')) || [];
+
+        if (form.dataset.index) {
+            const index = form.dataset.index;
+            exercises[index] = { name, instructions };
+            delete form.dataset.index;
+        } else {
+            exercises.push({ name, instructions });
+        }
+
+        saveExercises(exercises);
+        loadExercises();
+        form.reset();
+    });
+
+    window.editExercise = function(index) {
+        const exercises = JSON.parse(localStorage.getItem('breathingExercises'));
+        const exercise = exercises[index];
+
+        document.getElementById('exercise-name').value = exercise.name;
+        document.getElementById('instructions').value = exercise.instructions;
+        form.dataset.index = index;
+    };
+
+    window.deleteExercise = function(index) {
+        const exercises = JSON.parse(localStorage.getItem('breathingExercises'));
+        exercises.splice(index, 1);
+        saveExercises(exercises);
+        loadExercises();
+    };
+
+    loadExercises();
+    loadExampleExercises();
+});
+    </script>
+        </section>
+        <section id="objectifs">
+            <!-- Contenu de la section Objectifs et Suivi -->
+             <h1>Objectifs et suivi de progression</h1>
+    <form id="goal-form">
+        <label for="goal">Objectif:</label>
+        <input type="text" id="goal" name="goal" required><br>
+
+        <label for="task">Tâche:</label>
+        <input type="text" id="task" name="task" required><br>
+
+        <label for="due-date">Date d'échéance:</label>
+        <input type="date" id="due-date" name="due-date" required><br>
+
+        <label for="progress">Progrès (%):</label>
+        <input type="number" id="progress" name="progress" min="0" max="100" required><br>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+    <div class="item-list" id="goal-list"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const goalForm = document.getElementById('goal-form');
+    const goalList = document.getElementById('goal-list');
+
+    function loadGoals() {
+        const goals = JSON.parse(localStorage.getItem('goals')) || [];
+        goalList.innerHTML = '';
+        goals.forEach((goal, index) => {
+            const goalElement = document.createElement('div');
+            goalElement.className = 'item';
+            goalElement.innerHTML = `
+                <h3>${goal.name}</h3>
+                <p>Tâche: ${goal.task}</p>
+                <p>Date d'échéance: ${goal.dueDate}</p>
+                <p>Progrès: ${goal.progress}%</p>
+                <div class="actions">
+                    <button onclick="editGoal(${index})">Modifier</button>
+                    <button onclick="deleteGoal(${index})">Supprimer</button>
+                </div>
+            `;
+            goalList.appendChild(goalElement);
+        });
+    }
+
+    function saveGoals(goals) {
+        localStorage.setItem('goals', JSON.stringify(goals));
+    }
+
+    goalForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const goal = document.getElementById('goal').value;
+        const task = document.getElementById('task').value;
+        const dueDate = document.getElementById('due-date').value;
+        const progress = document.getElementById('progress').value;
+        const goals = JSON.parse(localStorage.getItem('goals')) || [];
+
+        if (goalForm.dataset.index) {
+            const index = goalForm.dataset.index;
+            goals[index] = { name: goal, task, dueDate, progress };
+            delete goalForm.dataset.index;
+        } else {
+            goals.push({ name: goal, task, dueDate, progress });
+        }
+
+        saveGoals(goals);
+        loadGoals();
+        goalForm.reset();
+    });
+
+    window.editGoal = function(index) {
+        const goals = JSON.parse(localStorage.getItem('goals'));
+        const goal = goals[index];
+
+        document.getElementById('goal').value = goal.name;
+        document.getElementById('task').value = goal.task;
+        document.getElementById('due-date').value = goal.dueDate;
+        document.getElementById('progress').value = goal.progress;
+        goalForm.dataset.index = index;
+    };
+
+    window.deleteGoal = function(index) {
+        const goals = JSON.parse(localStorage.getItem('goals'));
+        goals.splice(index, 1);
+        saveGoals(goals);
+        loadGoals();
+    };
+
+    loadGoals();
+});
+    </script>
+        </section>
+        <section id="conseils">
+            <!-- Contenu de la section Conseils de Bien-Être -->
+           
+    <h2>Conseils de bien-être</h2>
+    <div id="wellness-tips">
+        
+        <ul>
+            <li>Prenez des pauses régulières pour vous étirer et vous détendre.</li>
+            <li>Pratiquez la gratitude chaque jour en notant ce pour quoi vous êtes reconnaissant.</li>
+            <li>Établissez des limites saines et apprenez à dire non lorsque nécessaire.</li>
+            <li>Mangez équilibré et restez hydraté tout au long de la journée.</li>
+            <li>Faites de l'exercice régulièrement, même si ce n'est qu'une courte promenade.</li>
+            <li>Dormez suffisamment pour permettre à votre corps de récupérer.</li>
+            <li>Essayez la méditation ou des exercices de respiration pour réduire le stress.</li>
+            <li>Maintenez une vie sociale active et passez du temps avec vos proches.</li>
+            <li>Pratiquez des activités relaxantes comme la lecture, le dessin ou écouter de la musique.</li>
+            <li>Fixez-vous des objectifs personnels et professionnels réalistes.</li>
+            <li>Limitez votre consommation de caféine et d'alcool.</li>
+            <li>Déconnectez-vous des écrans avant de dormir pour améliorer la qualité de votre sommeil.</li>
+            <li>Apprenez à gérer votre temps efficacement pour éviter la surcharge de travail.</li>
+            <li>Pratiquez des techniques de relaxation comme le yoga ou le tai-chi.</li>
+            <li>Faites des activités en plein air pour profiter de la nature et prendre l'air frais.</li>
+            <li>Restez curieux et apprenez de nouvelles compétences ou hobbies.</li>
+            <li>Gardez un journal pour exprimer vos pensées et vos émotions.</li>
+            <li>Adoptez une attitude positive et entourez-vous de personnes inspirantes.</li>
+            <li>Faites des pauses régulières pendant le travail pour éviter la fatigue mentale.</li>
+            <li>Évitez les situations et les personnes toxiques qui drainent votre énergie.</li>
+            <li>Écoutez votre corps et reposez-vous lorsque vous en avez besoin.</li>
+            <li>Essayez de nouvelles recettes saines pour diversifier votre alimentation.</li>
+            <li>Faites du bénévolat ou aidez les autres pour augmenter votre sentiment de satisfaction.</li>
+            <li>Planifiez des moments de loisirs pour vous détendre et vous amuser.</li>
+            <li>Évitez de trop vous comparer aux autres et concentrez-vous sur vos propres progrès.</li>
+            <li>Pratiquez la pleine conscience pour rester présent et apprécier le moment.</li>
+            <li>Entourez-vous de nature, même si c'est simplement en ayant des plantes chez vous.</li>
+            <li>Limitez votre exposition aux nouvelles négatives et privilégiez les contenus positifs.</li>
+            <li>Faites de votre espace de vie un endroit accueillant et inspirant.</li>
+            <li>Pratiquez la respiration profonde pour calmer votre esprit et votre corps.</li>
+            <li>Établissez une routine matinale qui vous motive pour la journée à venir.</li>
+            <li>Fixez-vous des défis personnels pour rester motivé et actif.</li>
+            <li>Planifiez des vacances ou des escapades pour changer d'air et vous ressourcer.</li>
+            <li>Participez à des activités de groupe ou des clubs pour rencontrer de nouvelles personnes.</li>
+            <li>Limitez votre consommation de sucre pour stabiliser votre énergie et votre humeur.</li>
+            <li>Établissez des rituels de fin de journée pour vous détendre avant de dormir.</li>
+            <li>Apprenez à méditer pour améliorer votre concentration et réduire le stress.</li>
+            <li>Écoutez de la musique relaxante pour vous détendre et améliorer votre humeur.</li>
+        </ul>
+        <section id="community">
+            <p>Communauté</p>
+              <section id="community">
+           
+            <p>Rejoignez Les différents  communauté dynamique de passionnés de remise en forme :</p>
+            <ul>
+                <li>Partagez vos progrès et vos réussites : <a href="https://www.reddit.com/r/fitness/">Reddit Fitness</a> - Une communauté en ligne où vous pouvez partager vos progrès, poser des questions et trouver du soutien.</li>
+                <li>Échangez des conseils et des astuces : <a href="https://forum.bodybuilding.com/">Bodybuilding.com Forum</a> - Un forum actif où vous pouvez discuter de l'entraînement, de la nutrition et de la motivation avec d'autres passionnés.</li>
+                <li>Participez à des défis : <a href="https://www.challengeyourself.fit/">Challenge Yourself</a> - Une plateforme proposant des défis de remise en forme et des compétitions pour vous motiver et vous pousser à atteindre vos objectifs.</li>
+                <li>Événements communautaires : <a href="https://www.meetup.com/">Meetup</a> - Rejoignez des événements sportifs locaux organisés par des groupes de remise en forme près de chez vous.</li>
+                 </section>
+
+                 <section id="Nutrition">
+                    <p>Nutrition</p>
+                      <section id="Nutrition">
+                
+                 <p>Conseils pour une alimentation saine</p>
+
+     Une liste de courses bien préparée peut grandement aider à maintenir une alimentation équilibrée. Incluez des légumes secs comme les lentilles et les haricots, des fruits oléagineux comme les amandes et les noix, des protéines maigres comme le poulet et le thon, ainsi que des glucides complexes comme le quinoa et les patates douces. Privilégiez également les légumes verts et les fruits de saison.
+        </p>
+        <p>Source: <a href="https://www.fitness-land.fr">Fitness Land</a></p>
+    
+
+        <p>Nutrition sportive</p>
+        
+            Pour les sportifs, il est important de consommer suffisamment de protéines pour la reconstruction musculaire et des glucides complexes pour l'énergie. Les protéines peuvent être d'origine animale (poulet, poisson) ou végétale (tofu, légumineuses). Évitez les glucides raffinés et optez pour des alternatives comme le riz complet et l'avoine non cuite.
+        
+        <p>Source: <a href="https://quentin-pakiry.fr">Quentin Pakiry</a></p>
+    
+        <p>Équilibre et modération</p>
+        <p>
+            La clé d'une alimentation saine est la modération et la diversité. Remplacez les céréales raffinées par des céréales complètes, réduisez les aliments ultra-transformés et privilégiez les graisses saines comme l'huile d'olive et les avocats. Assurez-vous que chaque repas comprend des portions équilibrées de protéines, de glucides et de légumes.
+        </p>
+        <p>Sources: <a href="https://amelioretasante.com">Améliore ta Santé</a> et <a href="https://www.ncbi.nlm.nih.gov">NCBI</a></p>
+    </section>
+
+        <section id="rappels">
+            <!-- Contenu de la section Rappels Positifs -->
+                <h1>Rappels positifs</h1>
+    <form id="positive-reminder-form">
+        <label for="reminder">Rappel:</label>
+        <input type="text" id="reminder" name="reminder" required><br>
+
+        <label for="time">Heure (HH:MM):</label>
+        <input type="time" id="time" name="time" required><br>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+    <div class="item-list" id="positive-reminder-list"></div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const positiveReminderForm = document.getElementById('positive-reminder-form');
+    const positiveReminderList = document.getElementById('positive-reminder-list');
+
+    function loadPositiveReminders() {
+        const reminders = JSON.parse(localStorage.getItem('positiveReminders')) || [];
+        positiveReminderList.innerHTML = '';
+        reminders.forEach((reminder, index) => {
+            const reminderElement = document.createElement('div');
+            reminderElement.className = 'item';
+            reminderElement.innerHTML = `
+                <h3>${reminder.text}</h3>
+                <p>Heure: ${reminder.time}</p>
+                <div class="actions">
+                    <button onclick="editReminder(${index})">Modifier</button>
+                    <button onclick="deleteReminder(${index})">Supprimer</button>
+                </div>
+            `;
+            positiveReminderList.appendChild(reminderElement);
+        });
+    }
+
+    function savePositiveReminders(reminders) {
+        localStorage.setItem('positiveReminders', JSON.stringify(reminders));
+    }
+
+    positiveReminderForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const reminder = document.getElementById('reminder').value;
+        const time = document.getElementById('time').value;
+        const reminders = JSON.parse(localStorage.getItem('positiveReminders')) || [];
+
+        if (positiveReminderForm.dataset.index) {
+            const index = positiveReminderForm.dataset.index;
+            reminders[index] = { text: reminder, time };
+            delete positiveReminderForm.dataset.index;
+        } else {
+            reminders.push({ text: reminder, time });
+        }
+
+        savePositiveReminders(reminders);
+        loadPositiveReminders();
+        positiveReminderForm.reset();
+    });
+
+    window.editReminder = function(index) {
+        const reminders = JSON.parse(localStorage.getItem('positiveReminders'));
+        const reminder = reminders[index];
+
+        document.getElementById('reminder').value = reminder.text;
+        document.getElementById('time').value = reminder.time;
+        positiveReminderForm.dataset.index = index;
+    };
+
+    window.deleteReminder = function(index) {
+        const reminders = JSON.parse(localStorage.getItem('positiveReminders'));
+        reminders.splice(index, 1);
+        savePositiveReminders(reminders);
+        loadPositiveReminders();
+    };
+
+    function checkReminders() {
+        const reminders = JSON.parse(localStorage.getItem('positiveReminders')) || [];
+        const now = new Date();
+        const currentTime = `${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}`;
+        reminders.forEach(reminder => {
+            if (reminder.time === currentTime) {
+                alert(`Rappel positif: ${reminder.text}`);
+            }
+        });
+    }
+
+    loadPositiveReminders();
+    setInterval(checkReminders, 60000); // Vérifier les rappels toutes les minutes
+});
+    </script>
+          
+
+        </section>
+        <section id="ressources">
+            <!-- Contenu de la section Ressources -->
+            
+    <h2>Ressources pour améliorer la productivité et la gestion du stress</h2>
+    <div id="resource-list">
+        <h3>Articles et Outils utiles</h3>
+        <ul>
+            <li><a href="https://www.helpguide.org/articles/stress/stress-management.htm" target="_blank">Gérer le Stress: Conseils pour réduire le stress dans votre vie quotidienne</a></li>
+            <li><a href="https://www.ted.com/talks/kelly_mcgonigal_how_to_make_stress_your_friend" target="_blank">Comment faire du stress votre ami: Conférence TED par Kelly McGonigal</a></li>
+            <li><a href="https://www.mindful.org/meditation/mindfulness-getting-started/" target="_blank">Mindfulness: Getting Started - Guide par Mindful.org</a></li>
+            <li><a href="https://www.mayoclinic.org/tests-procedures/meditation/in-depth/meditation/art-20045858" target="_blank">Meditation: A simple, fast way to reduce stress - Mayo Clinic</a></li>
+            <li><a href="https://www.nytimes.com/guides/well/how-to-meditate" target="_blank">How to Meditate - New York Times Guide</a></li>
+            <li><a href="https://www.verywellmind.com/how-to-improve-your-concentration-3145269" target="_blank">How to Improve Your Concentration - Verywell Mind</a></li>
+            <li><a href="https://www.healthline.com/nutrition/16-ways-relieve-stress-anxiety" target="_blank">16 Simple Ways to Relieve Stress and Anxiety - Healthline</a></li>
+            <li><a href="https://www.headspace.com/meditation/stress" target="_blank">Stress Management - Headspace</a></li>
+            <li><a href="https://www.psychologytoday.com/us/basics/stress" target="_blank">Understanding Stress - Psychology Today</a></li>
+            <li><a href="https://www.mentalhealth.org.uk/publications/how-to-manage-and-reduce-stress" target="_blank">How to Manage and Reduce Stress - Mental Health Foundation</a></li>
+        </ul>
+    </div>
+        <h1>Suivi de l'humeur</h1>
+    <section id="mood-tracker">
+        <h2>Comment vous sentez-vous aujourd'hui ?</h2>
+        <div class="mood-selector">
+            <button onclick="selectMood('😀')">😀</button>
+            <button onclick="selectMood('😊')">😊</button>
+            <button onclick="selectMood('😐')">😐</button>
+            <button onclick="selectMood('😔')">😔</button>
+            <button onclick="selectMood('😢')">😢</button>
+        </div>
+        <div class="journal-entry">
+            <h3>Journal</h3>
+            <textarea id="journal-text" placeholder="Écrivez vos pensées ici..."></textarea>
+            <button onclick="saveJournal()">Enregistrer</button>
+        </div>
+        <div id="journal-entries"></div>
+        <div class="message" id="support-message"></div>
+    </section>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+    loadJournalEntries();
+});
+
+function selectMood(mood) {
+    const date = new Date().toLocaleDateString();
+    localStorage.setItem('mood-' + date, mood);
+    const message = getSupportMessage(mood);
+    document.getElementById('support-message').innerText = message;
+    alert('Humeur du jour enregistrée: ' + mood);
+}
+
+function saveJournal() {
+    const date = new Date().toLocaleDateString();
+    const text = document.getElementById('journal-text').value;
+    localStorage.setItem('journal-' + date, text);
+    loadJournalEntries();
+    document.getElementById('journal-text').value = '';
+    alert('Journal du jour enregistré.');
+}
+
+function loadJournalEntries() {
+    const entries = document.getElementById('journal-entries');
+    entries.innerHTML = '';
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('journal-')) {
+            const date = key.replace('journal-', '');
+            const text = localStorage.getItem(key);
+            const mood = localStorage.getItem('mood-' + date) || '😐';
+            entries.innerHTML += `
+                <div>
+                    <strong>${date}</strong> (${mood}):<br>${text}
+                    <br>
+                    <button onclick="editEntry('${date}')">Modifier</button>
+                    <button onclick="deleteEntry('${date}')">Supprimer</button>
+                </div>
+                <hr>`;
+        }
+    }
+}
+
+function editEntry(date) {
+    const text = localStorage.getItem('journal-' + date);
+    document.getElementById('journal-text').value = text;
+    document.getElementById('journal-text').dataset.editDate = date;
+    alert('Vous pouvez maintenant modifier votre entrée pour le ' + date);
+}
+
+function deleteEntry(date) {
+    localStorage.removeItem('journal-' + date);
+    localStorage.removeItem('mood-' + date);
+    loadJournalEntries();
+    alert('Entrée supprimée pour le ' + date);
+}
+
+function getSupportMessage(mood) {
+    const messages = {
+        '😀': 'Bravo ! Continuez à sourire et à répandre la joie autour de vous !',
+        '😊': 'C’est génial de vous voir heureux ! Gardez cette énergie positive !',
+        '😐': 'Courage, chaque jour apporte de nouvelles opportunités.',
+        '😔': 'Prenez soin de vous. Il est normal d’avoir des jours difficiles.',
+        '😢': 'Nous sommes avec vous. N’hésitez pas à chercher du soutien si nécessaire.'
+    };
+    return messages[mood] || '';
+}
+    </script>
+</section>
+    </main>
+       </script>
+        <footer>
+        <p>&copy; 2024 KazyZen</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+            alert('Bienvenue sur KazyZen');
+        });
+    </script>
+</body>
+</html>
